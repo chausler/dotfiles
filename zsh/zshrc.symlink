@@ -83,8 +83,8 @@ source $ZSH/oh-my-zsh.sh
 
 export DOTFILES=$HOME/.dotfiles
 # added by Anaconda 2.0.1 installer
-export PATH="/Users/christopherhausler/anaconda/bin:$PATH"
-export PATH="/Users/christopherhausler/bin:/opt/local/bin:$PATH"
+export PATH="$HOME/anaconda/bin:$PATH"
+export PATH="$HOME/bin:/opt/local/bin:$PATH"
 
 
 # use .localrc for SUPER SECRET CRAP that you don't
@@ -109,3 +109,5 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
+
+PROMPT='%{$fg_bold[white]%}%M %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
