@@ -86,6 +86,8 @@ export DOTFILES=$HOME/.dotfiles
 export PATH="$HOME/anaconda/bin:$PATH"
 export PATH="$HOME/bin:/opt/local/bin:$PATH"
 
+# my executables dir
+export PATH="$HOME/bin:$PATH"
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
