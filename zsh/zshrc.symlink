@@ -88,7 +88,7 @@ export PATH="$HOME/bin:/opt/local/bin:$PATH"
 
 # my executables dir
 export PATH="$HOME/bin:$PATH"
-
+export PATH="/Applications/Julia-0.3.5.app/Contents/Resources/julia/bin:$PATH"
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -116,3 +116,18 @@ RPROMPT='$(vi_mode_prompt_info) [%*]'
 
 
 bindkey "^R" history-incremental-search-backward
+
+cb () {
+  git branch | cut -c 3- | selecta | xargs git checkout
+}
+
+zeust () {
+ find test/* -type f -not -path '*.swp' | selecta
+}
+
+function prj() {
+  cd $(find ~/code -maxdepth 2 -type d | selecta)
+  zle reset-prompt
+}
+zle -N prj
+bindkey "^P" "prj"

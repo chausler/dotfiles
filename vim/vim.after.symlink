@@ -1,0 +1,74 @@
+" set up solarized
+if has('gui_running')
+  set background=light
+else
+  set background=dark
+endif
+se t_Co=256
+let g:solarized_termcolors = 256
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+colorscheme solarized
+
+" supertab...  GO!
+" let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+
+map <leader>d :NERDTreeToggle<CR>
+map <leader>c :set cursorcolumn!<CR>
+
+" Rails.vim mappings
+map <leader>a :A<CR>
+map <leader>rc :Rcontroller<CR>
+map <leader>rmo :Rmodel<CR>
+map <leader>rmi :Rmigration<CR>
+map <leader>rv :Rview<CR>
+
+" move between splits
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" syntastic options
+let g:syntastic_check_on_open=1
+let g:syntastic_echo_current_error=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_ruby_checkers=['mri']
+
+nmap <leader>f :Ack! 
+
+set ttymouse=xterm2
+set mouse=a
+
+inoremap jj <esc> :w!<cr>
+
+au BufRead,BufNewFile *.txt.erb set wrap linebreak nolist textwidth=0 wrapmargin=0
+
+
+" force proper home key use
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <C-p> :call SelectaCommand("find * -type f ! -path '*.gem' ! -path '*.swp' ! -path '*images*' ! -path '*.class'", "", ":e")<cr>
+
