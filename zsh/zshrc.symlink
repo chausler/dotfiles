@@ -46,7 +46,7 @@ ZSH_THEME="philips"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby rails rbenv lein rake osx bundler vi-mode)
+plugins=(git)
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 # User configuration
 
