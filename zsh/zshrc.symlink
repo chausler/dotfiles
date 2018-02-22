@@ -134,4 +134,4 @@ bindkey "^P" "prj"
 # alias vim="mvim -v"
 
 # ADDED BY DOCKER-IMAGES
-source /Users/christopherhausler/Code/zendesk/docker-images/dockmaster/zdi.sh
+#source /Users/christopherhausler/Code/zendesk/docker-images/dockmaster/zdi.sh
